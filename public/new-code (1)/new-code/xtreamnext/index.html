@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XtreamNext</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+
+</head>
+
+<body>
+    <div class="layout">
+        <div class="flex-wrap">
+            <div class="sidebar">
+                <ul>
+                    <li id="toggle-sidebar-content" class="sidebar-item li-item ">
+                        <a href="#"><i class="bi bi-house-door"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="position-content"><i class="bi bi-bag-plus"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="history-content"><i class="bi bi-clock-history"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="code-content"><i class="bi bi-code-slash"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="users-content"><i class="bi bi-people"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="crown-content"><i class="bi bi-currency-dollar"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="cap-content"><i class="bi bi-bank2"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="mortarboard-content"><i class="bi bi-mortarboard"></i></a>
+                    </li>
+                    <li class="sidebar-item li-item ">
+                        <a href="#" data-target="person-badge-content"><i class="bi bi-person-badge"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-content-container d-none d-md-block ">
+                <div class="top-sidebar">
+                    <div class="currency-box">
+                        <i class="fas fa-dollar-sign fa-lg"></i>
+                        <div>
+                            <div class="currency-name">EURUSD</div>
+                            <div class="currency-value">$ 1.07368</div>
+                        </div>
+                    </div>
+                    <div class="currency-box">
+                        <i class="fas fa-gem fa-lg"></i>
+                        <div>
+                            <div class="currency-name">XAUUSD</div>
+                            <div class="currency-value">$ 2307.11</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search eg: EUR/USD, BTC" />
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="tabs">
+                    <button class="tab-button active small-text" onclick="showTab('favorites')">
+                        Favorites
+                    </button>
+                    <button class="tab-button small-text" onclick="showTab('all-symbols')">
+                        All Symbols
+                    </button>
+                </div>
+                <div id="favorites" class="tab-content active">
+                    <div id="favorites-content" class="scrollable-content">
+                        <!-- Currency table will be rendered here by JavaScript -->
+                    </div>
+                </div>
+                <div id="all-symbols" class="tab-content">
+                    <div class="accordion" id="ao-accordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button small-text-force" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    Forex
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#ao-accordion">
+                                <div id="forex-container-small" class="accordion-body small-text-force">
+                                    <!-- Forex cards will be rendered here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed small-text-force" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Stocks
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#ao-accordion">
+                                <div id="stocks-container" class="accordion-body">
+                                    <!-- Stocks cards will be rendered here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed  small-text-force" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Crypto
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse small-text-force"
+                                aria-labelledby="headingThree" data-bs-parent="#ao-accordion">
+                                <div id="crypto-container" class="accordion-body">
+                                    <!-- Crypto cards will be rendered here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed small-text-force" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                    Indices
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse small-text-force"
+                                aria-labelledby="headingFour" data-bs-parent="#ao-accordion">
+                                <div id="indices-container" class="accordion-body">
+                                    <!-- Indices cards will be rendered here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed small-text-force" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">
+                                    Commodities
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse small-text-force"
+                                aria-labelledby="headingFive" data-bs-parent="#ao-accordion">
+                                <div id="commodities-container" class="accordion-body">
+                                    <!-- Commodities cards will be rendered here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content overflow-scroll-y">
+                <div class="p-4" id="position-content">
+                    <div class="d-block d-lg-none mt-4 mb-4">
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div>Balance:</div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div>Equity:</div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div>Used Margin:</div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div>Free Margin:</div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div>Margin Level:</div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+
+                            </div>
+
+                        </div>
+                        <div class="text-center"><span class="text-secondary">Profit:-</span><span
+                                class=" fw-bold text-danger fs-5">-77.00</span></div>
+
+                    </div>
+
+                    <div>
+                        <div class="d-flex d-flex-column justify-content-between w-100">
+                            <div class="flex-grow-1">Position (5)</div>
+                            <div class="d-none d-lg-flex d-flex-column">
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force"
+                                    type="submit">Cancel</button>
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force" type="submit">Cancel all
+                                    Order</button>
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force"
+                                    type="submit">Cancel</button>
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force" type="submit">Cancel
+                                    limit order</button>
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force " type="submit">Cancel
+                                    all position</button>
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force " type="submit">Cancel
+                                    profitable position</button>
+                                <button class="btn btn-sm btn-secondary me-1 medium-text-force " type="submit">Close
+                                    losing position</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="container mt-4 d-none d-lg-block">
+
+                                <!-- <div class="custom-table-responsive" style="overflow: auto;">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">TIME</th>
+                                                <th scope="col">SYMBOL</th>
+                                                <th scope="col">ORDER</th>
+                                                <th scope="col">LOT</th>
+                                                <th scope="col">PRICE</th>
+                                                <th scope="col">PARTIAL</th>
+                                                <th scope="col">SL</th>
+                                                <th scope="col">TP</th>
+                                                <th scope="col">Swap</th>
+                                                <th scope="col">LTP</th>
+                                                <th scope="col">Profit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="scrollable-content-history" id="positionTableBody">
+                                   
+                                        </tbody>
+                                    </table>
+                                </div> -->
+
+                             <div class="table-resposive">
+                                <table id="positionTable"  class="custom-table-responsive" style="overflow: auto;">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Time</th>
+                                            <th>Symbol</th>
+                                            <th>Order</th>
+                                            <th>Lot</th>
+                                            <th>Price</th>
+                                            <th>Partial</th>
+                                            <th>SL</th>
+                                            <th>TP</th>
+                                            <th>Swap</th>
+                                            <th>LTP</th>
+                                            <th>Profit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Data rows will be inserted here -->
+                                    </tbody>
+                                </table>
+                             </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div
+                        class="bg-light-gray w-100 medium-text-force d-flex justify-content-center p-2 d-none d-lg-flex">
+                        <div class="d-flex flex-column flex-md-row gap-4">
+                            <div class="d-flex gap-1">
+                                <div class="text-sm">Balance: </div>
+                                <div class="text-sm font-weight-bold text-primary">93737</div>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <div class="text-sm">Equity: </div>
+                                <div class="text-sm font-weight-bold text-primary">93737</div>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <div class="text-sm">Used Margin: </div>
+                                <div class="text-sm font-weight-bold text-primary">93737</div>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <div class="text-sm">Free Margin: </div>
+                                <div class="text-sm font-weight-bold text-primary">93737</div>
+                            </div>
+                            <div class="d-flex gap-1">
+                                <div class="text-sm">Margin Level: </div>
+                                <div class="text-sm font-weight-bold text-primary">93737</div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1"></div> <!-- This will take up the remaining space -->
+                        <div class="mx-5 fw-bold text-align-right text-danger fs-5">-87.1</div>
+                    </div>
+
+
+
+                    <div class="d-flex justify-content-center text-center mt-2 d-none d-lg-block">No order(s) Found
+                    </div>
+
+                    <div class="d-block d-lg-none mt-4 ">
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div class="fw-bold ">XAUUSD
+                                    <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                        0.001</span>
+                                </div>
+                                <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span></div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div class="fw-bold ">XAUUSD
+                                    <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                        0.001</span>
+                                </div>
+                                <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span></div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-danger">-00.6</div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <div>
+                                <div class="fw-bold ">XAUUSD
+                                    <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                        0.001</span>
+                                </div>
+                                <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span></div>
+                            </div>
+                            <div>
+                                <div class="fw-bold text-primary">00.56</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="qoute-content">
+                    <h5 class="text-center mt-4 mb-4">Quotes</h5>
+                    <div class="sidebar-content-container-small d-block d-md-none">
+                        <div class="top-sidebar">
+                            <div class="currency-box">
+                                <i class="fas fa-dollar-sign fa-lg"></i>
+                                <div>
+                                    <div class="currency-name">EURUSD</div>
+                                    <div class="currency-value">$ 1.07368</div>
+                                </div>
+                            </div>
+                            <div class="currency-box">
+                                <i class="fas fa-gem fa-lg"></i>
+                                <div>
+                                    <div class="currency-name">XAUUSD</div>
+                                    <div class="currency-value">$ 2307.11</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search eg: EUR/USD, BTC" />
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                        <div class="tabs-small">
+                            <button class="tab-button-small active small-text"
+                                onclick="showTabSmall('favorites-small')">
+                                Favorites
+                            </button>
+                            <button class="tab-button-small small-text" onclick="showTabSmall('all-symbols-small')">
+                                All Symbols
+                            </button>
+                        </div>
+                        <div id="favorites-small" class="tab-content-small active">
+                            <div id="favorites-content-small" class="scrollable-content">
+                                <!-- Currency table will be rendered here by JavaScript -->
+                            </div>
+                        </div>
+                        <div id="all-symbols-small" class="tab-content-small">
+                            <div class="accordion" id="ao-accordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button small-text-force" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Forex
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#ao-accordion">
+                                        <div id="forex-container" class="accordion-body small-text-force">
+                                            <!-- Forex cards will be rendered here by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed small-text-force" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            Stocks
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#ao-accordion">
+                                        <div id="stocks-container" class="accordion-body">
+                                            <!-- Stocks cards will be rendered here by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed small-text-force" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            Crypto
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse small-text-force"
+                                        aria-labelledby="headingThree" data-bs-parent="#ao-accordion">
+                                        <div id="crypto-container" class="accordion-body">
+                                            <!-- Crypto cards will be rendered here by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed small-text-force" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                            Indices
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse small-text-force"
+                                        aria-labelledby="headingFour" data-bs-parent="#ao-accordion">
+                                        <div id="indices-container" class="accordion-body">
+                                            <!-- Indices cards will be rendered here by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFive">
+                                        <button class="accordion-button collapsed small-text-force" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                                            aria-expanded="false" aria-controls="collapseFive">
+                                            Commodities
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFive" class="accordion-collapse collapse small-text-force"
+                                        aria-labelledby="headingFive" data-bs-parent="#ao-accordion">
+                                        <div id="commodities-container" class="accordion-body">
+                                            <!-- Commodities cards will be rendered here by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-none d-md-block">
+                        <div>
+                            <h5>Welcome Xtreme Next Live - Demo
+                            </h5>
+                        </div>
+                        <div class="container mt-4">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Account Status</h5>
+                                            <button class="btn btn-primary btn-block">Verified</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">User Account</h5>
+                                            <p class="card-text">7R298EUKGD</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Balance</h5>
+                                            <p class="card-text">$ 98371</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Free Margin</h5>
+                                            <p class="card-text">$ 98371</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="trading-tabs">
+                            <div class="trading-tab-switcher">
+                                <div class="trading-tab-button active" id="trading-tab-copy"
+                                    onclick="switchTradingTab('copy')">Copy Trading</div>
+                                <div class="trading-tab-button" id="trading-tab-mam" onclick="switchTradingTab('mam')">
+                                    MAM</div>
+                                <div class="trading-tab-button" id="trading-tab-pamm"
+                                    onclick="switchTradingTab('pamm')">PAMM</div>
+                            </div>
+
+                            <!-- Copy Trading Tab Content -->
+                            <div class="trading-tab-content active" id="trading-copy-content">
+                                <div class="custom-table-responsive" style="overflow: auto;">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>RANK</th>
+                                                <th>Growth</th>
+                                                <th>Followers</th>
+                                                <th>DRAWDOWN</th>
+                                                <th>Fund Risk</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="follow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Follow</div>
+                                                                <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="unfollow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Unfollow</div>
+                                                                <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- MAM Tab Content -->
+                            <div class="trading-tab-content" id="trading-mam-content">
+                                <div class="custom-table-responsive" style="overflow: auto;">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>RANK</th>
+                                                <th>Growth</th>
+                                                <th>Followers</th>
+                                                <th>DRAWDOWN</th>
+                                                <th>Fund Risk</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="follow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Follow</div>
+                                                                <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="unfollow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Unfollow</div>
+                                                                <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- PAMM Tab Content -->
+                            <div class="trading-tab-content" id="trading-pamm-content">
+                                <div class="custom-table-responsive" style="overflow: auto;">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>RANK</th>
+                                                <th>Growth</th>
+                                                <th>Followers</th>
+                                                <th>DRAWDOWN</th>
+                                                <th>Fund Risk</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="follow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Follow</div>
+                                                                <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="unfollow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Unfollow</div>
+                                                                <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="dashboard-content">
+                    <div class="">
+                        <div>
+                            <h5 class="text-center mt-4">Welcome Xtreme Next Live - Demo
+                            </h5>
+                        </div>
+                        <div class="container mt-4">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Account Status</h5>
+                                            <button class="btn btn-primary btn-block">Verified</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">User Account</h5>
+                                            <p class="card-text">7R298EUKGD</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Balance</h5>
+                                            <p class="card-text">$ 98371</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Free Margin</h5>
+                                            <p class="card-text">$ 98371</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="trading-tabs">
+                            <div class="trading-tab-switcher">
+                                <div class="trading-tab-button active" id="trading-tab-copy"
+                                    onclick="switchTradingTab('copy')">Copy Trading</div>
+                                <div class="trading-tab-button" id="trading-tab-mam" onclick="switchTradingTab('mam')">
+                                    MAM</div>
+                                <div class="trading-tab-button" id="trading-tab-pamm"
+                                    onclick="switchTradingTab('pamm')">PAMM</div>
+                            </div>
+
+                            <!-- Copy Trading Tab Content -->
+                            <div class="trading-tab-content active" id="trading-copy-content">
+                                <div class="custom-table-responsive" style="overflow-x: auto;">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>RANK</th>
+                                                <th>Growth</th>
+                                                <th>Followers</th>
+                                                <th>DRAWDOWN</th>
+                                                <th>Fund Risk</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="follow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Follow</div>
+                                                                <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="unfollow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Unfollow</div>
+                                                                <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- MAM Tab Content -->
+                            <div class="trading-tab-content" id="trading-mam-content">
+                                <div class="custom-table-responsive">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>RANK</th>
+                                                <th>Growth</th>
+                                                <th>Followers</th>
+                                                <th>DRAWDOWN</th>
+                                                <th>Fund Risk</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="follow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Follow</div>
+                                                                <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="unfollow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Unfollow</div>
+                                                                <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- PAMM Tab Content -->
+                            <div class="trading-tab-content" id="trading-pamm-content">
+                                <div class="custom-table-responsive" style="overflow: auto;">
+                                    <table class="custom-responsive-table text-x-small table">
+                                        <thead>
+                                            <tr>
+                                                <th>NAME</th>
+                                                <th>RANK</th>
+                                                <th>Growth</th>
+                                                <th>Followers</th>
+                                                <th>DRAWDOWN</th>
+                                                <th>Fund Risk</th>
+                                                <th>Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="follow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Follow</div>
+                                                                <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-100 d-flex justify-content-center">
+                                                    <div>
+                                                        <div class="text-secondary">Admin</div>
+                                                        <div class="unfollow-box">
+                                                            <div class="d-flex gap-2">
+                                                                <div>Unfollow</div>
+                                                                <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>1</td>
+                                                <td>5%</td>
+                                                <td>1000</td>
+                                                <td>-2%</td>
+                                                <td>Medium</td>
+                                                <td>High</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="p-4 w-100" id="history-content">
+
+                    <div class="d-flex justify-content-between w-100">
+                        <div>
+                            <h4 class="d-none d-md-block">Order History (344)</h4>
+                            <h4 class="d-block d-md-none">History</h4>
+                        </div>
+                        <div class="flex-grow-1 d-flex justify-content-end">
+                            <div class="d-flex gap-4">
+                                <button class="btn btn-secondary  btn-sm"><i
+                                        class="bi bi-file-earmark-x-fill"></i></button>
+                                <button class="btn btn-secondary btn-sm"><i class="bi bi-clock-history"></i></button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="d-none d-sm-block">
+                        <div class="table-responsive-history">
+                            <table class="table table-hover small-text">
+                                <thead class="no-warp">
+                                    <tr class="no-warp">
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Symbol</th>
+                                        <th scope="col">Order</th>
+                                        <th scope="col">LOT</th>
+                                        <th scope="col">STATUS</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">SL</th>
+                                        <th scope="col">Tp</th>
+                                        <th scope="col">ENTRY</th>
+                                        <th scope="col">EXIT</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">STATUS</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">SL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="no-warp">
+                                        <th scope="row">1208</th>
+                                        <td>2024-06-13 19:09:50</td>
+                                        <td>GBPUSD</td>
+                                        <td>0.001</td>
+                                        <td>Sell</td>
+                                        <td>Closed</td>
+                                        <td>Market</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1.2736</td>
+                                        <td>1.27367</td>
+                                        <td>0</td>
+                                        <td>2.16/34</td>
+                                        <td>0</td>
+                                        <td>2024-06-14 11:37:27</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="d-none d-sm-flex flex-wrap mt-5 justify-content-between">
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Balance</div>
+                                    <div class="text-secondary fw-md fs-lg">9484797</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Deposit</div>
+                                    <div class="text-secondary fw-md fs-lg">9484797</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Withdraw</div>
+                                    <div class="text-secondary fw-md fs-lg">9484797</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Commission</div>
+                                    <div class="text-secondary fw-md fs-lg">9484797</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Swap</div>
+                                    <div class="text-secondary fw-md fs-lg">9484797</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Shared Profit</div>
+                                    <div class="text-secondary fw-md fs-lg">9484797</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3" style="width: 150px;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div>Profit</div>
+                                    <div class="text-danger fw-md fs-lg">-797</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="height: 80vh; overflow: auto;">
+                        <div class="d-block d-sm-none mt-4 ">
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">BRENT
+
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">BRENT
+
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-danger text-align-right">-00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">BTCUSD
+                                        <span class="text-danger">sell</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-danger text-align-right">-00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">BRENT
+
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">XAUUSD
+                                        <span class="text-primary">buy</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+                            <div class="d-flex justify-content-between w-100 mt-2">
+                                <div>
+                                    <div class="fw-bold ">BTCUSD
+                                        <span class="text-danger">sell</span><span class="text-sm text-primary">
+                                            0.001</span>
+                                    </div>
+                                    <div>2231.2<span><i class="bi bi-arrow-right mx-2"></i></span><span>2319.2</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="text-primary text-align-right">00.56</div>
+                                    <div class="small-text">2024-06-16 11:48:29</div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="d-block d-sm-none card position-fixed bottom-0 start-50 translate-middle-x  w-100 custom-margin-bottom"
+                            style="z-index: 1050;">
+                            <div class="card-body">
+                                <div class="w-100 d-flex justify-content-between">
+                                    <div>
+                                        <div>Profit: <span class="text-danger">-2988</span></div>
+                                        <div>Swap: <span class="">0</span></div>
+                                        <div>Commission: <span class="">0</span></div>
+                                    </div>
+                                    <div>
+                                        <div>Deposit: <span class="">22988</span></div>
+                                        <div>Balance: <span class="">22988</span></div>
+                                        <div>Withdraw: <span class="">12988</span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="p-4" id="api-access-content">API Access Content</div>
+                <div class="p-4" id="code-content">
+                    <h4 class="text-center">API ACCESS</h4>
+                    <h6 class="text-center">Trade from anywhere</h6>
+                    <div class="container mt-4 d-flex justify-content-center">
+                        <div class="card custom-card">
+                            <div class="custom-card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Your API Secret : 7R298EUKGD</h5>
+                                <input type="text" class="form-control custom-input" id="customInput"
+                                    placeholder="https://xtremenext.com/trade/placeorder.php?type=market">
+                                <div class="copy-box mt-2">
+                                    copy
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4" id="users-content">
+                    <h4 class="text-center">REFER AND EARN</h4>
+                    <h6 class="text-center">Earn 50% Commission when you refer someone.</h6>
+                    <div class="">
+                        <div class="d-flex flex-column flex-lg-row justify-content-center gap-4">
+                            <div class="container mt-4 d-flex justify-content-center">
+                                <div class="card custom-card">
+                                    <div class="custom-card-header"></div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Your API Secret : 7R298EUKGD</h5>
+                                        <input type="text" class="form-control custom-input" id="customInput"
+                                            placeholder="https://xtremenext.com/trade/placeorder.php?type=market">
+                                        <div class="copy-box mt-2">
+                                            copy
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container mt-4">
+                                <div class="card custom-card-style">
+                                    <div class="card-body">
+                                        <div class="d-flex d-flex-justify-center  gap-4">
+                                            <div class="d-flex gap-4">
+                                                <div>
+                                                    <p class="small-text-force">Your Refrel Code</p>
+                                                    <h6 class="">8GYDET</h6>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-4">
+                                                <div>
+                                                    <p class="small-text-force">Your Referral Bonus</p>
+                                                    <h6 class="text-center">
+                                                        $ 0.00</h6>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-4">
+                                                <div>
+                                                    <p class="small-text-force">Referred Accounts</p>
+                                                    <h6 class="text-center">0</h6>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <button class="btn btn-sm btn-secondary me-1 medium-text-force">Withdraw</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4" id="crown-content">
+                    <div class="w-100 px-2">
+                        <div class="border">
+                            <div class="unique-tab-container">
+                                <div class="unique-tab active " data-tab="unique-deposit">Deposit</div>
+                                <div class="unique-tab" data-tab="unique-withdraw">Withdraw</div>
+                            </div>
+                            <div class="unique-tab-content active" id="unique-deposit">
+                                <div class="unique-tab-content-inner">
+                                    <div>
+                                        <p class="text-center text-secondary">Deposit Payment</p>
+                                        <div>
+                                            <div class="unique-accordion-container">
+                                                <div class="unique-accordion-container">
+                                                    <div class="unique-accordion-item w-100">
+                                                        <div class="unique-accordion-header">
+                                                            <span class="unique-arrow">&#9654;</span>
+                                                            <div class="w-100 d-flex justify-between align-center">
+                                                                <div class="d-flex align-center">
+                                                                    <i class="bi bi-bank"></i>
+                                                                    <span class="text-small"
+                                                                        style="margin-left: 8px;">Bank
+                                                                        Transfer</span>
+                                                                </div>
+                                                                <div class="text-small">Minimum Deposit: 5</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="unique-accordion-content">
+                                                            <form>
+                                                                <div class="form-group mt-4">
+                                                                    <label for="account">Account Number</label>
+                                                                    <input type="text" class="form-control mt-1"
+                                                                        id="account"
+                                                                        placeholder="Enter your account number"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group mt-4">
+                                                                    <label for="branch">Branch</label>
+                                                                    <input type="text" class="form-control mt-1"
+                                                                        id="branch" placeholder="Enter branch name"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group mt-4">
+                                                                    <label for="ifsc">IFSC Code</label>
+                                                                    <input type="text" class="form-control mt-1"
+                                                                        id="ifsc" placeholder="Enter IFSC code"
+                                                                        required>
+                                                                </div>
+                                                                <div class="form-group mt-4">
+                                                                    <label for="remarks">Remarks</label>
+                                                                    <textarea class="form-control mt-1" id="remarks"
+                                                                        rows="3"
+                                                                        placeholder="Enter any remarks"></textarea>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="unique-accordion-container">
+                                                    <div class="unique-accordion-item w-100">
+                                                        <div class="unique-accordion-header">
+                                                            <span class="unique-arrow">&#9654;</span>
+                                                            <div class="w-100 d-flex justify-between align-center">
+                                                                <div class="d-flex align-center">
+                                                                    <i class="bi bi-currency-dollar"></i>
+                                                                    <span class="text-small"
+                                                                        style="margin-left: 8px;">USDT
+                                                                        TRC20</span>
+                                                                </div>
+                                                                <div class="text-small">Minimum Deposit: 5</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="unique-accordion-content">
+                                                            <div class="container">
+                                                                <div class="w-100 p-4">
+                                                                    <div class="d-flex justify-content-center w-100">
+                                                                        <img class="qr" src="./asset/images.png"
+                                                                            alt="QR Code" />
+                                                                    </div>
+                                                                    <div class="input-group">
+                                                                        <input
+                                                                            value="TMUitqjEDtLkN8x2dnXMXUWExXoHEfKoUJ"
+                                                                            type="text" class="form-control"
+                                                                            id="copyInput"
+                                                                            placeholder="Enter text to copy">
+                                                                        <div class="input-group-append">
+                                                                            <button class="btn btn-outline-primary"
+                                                                                type="button"
+                                                                                id="copyButton">Copy</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p
+                                                                    class="font-weight-normal text-secondary text-center">
+                                                                    Please only send USDT via the TRC20 Network. Funds
+                                                                    sent
+                                                                    via other networks will</p>
+                                                                <p
+                                                                    class="font-weight-normal  text-secondary  text-center">
+                                                                    not be received and cannot be recovered</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="unique-accordion-container">
+                                                    <div class="unique-accordion-item w-100">
+                                                        <div class="unique-accordion-header">
+                                                            <span class="unique-arrow">&#9654;</span>
+                                                            <div class="w-100 d-flex justify-between align-center">
+                                                                <div class="d-flex align-center">
+                                                                    <i class="bi bi-credit-card"></i>
+                                                                    <span class="text-small"
+                                                                        style="margin-left: 8px;">UPI
+                                                                    </span>
+                                                                </div>
+                                                                <div class="text-small">Minimum Deposit: 5</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="unique-accordion-content">
+                                                            <div class="container">
+                                                                <div class="input-group">
+                                                                    <input value="TMUitqjEDtLkN8x2dnXMXUWExXoHEfKoUJ"
+                                                                        type="text" class="form-control" id="copyInput"
+                                                                        placeholder="Enter text to copy">
+                                                                    <div class="input-group-append">
+                                                                        <button class="btn btn-outline-primary"
+                                                                            type="button" id="copyButton">Copy</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <div class="divider"></div>
+                                    <div class="mt-4 text-center">Payment Proof</div>
+
+                                    <div class="container mt-2">
+                                        <div class="d-flex w-100 justify-content-center">
+                                            <div class="">
+                                                <div class="uploader-box" id="uploaderBox">
+                                                    <i class="bi bi-cloud-arrow-up-fill"></i>
+                                                    <p>Drag and drop files here<br>or click to select files</p>
+                                                    <input type="file" id="fileInput" style="display: none;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <form class="custom-form mt-4">
+                                        <div class="form-group">
+                                            <label for="modeOfPayment">Mode of Payment</label>
+                                            <select class="form-control mt-1" id="modeOfPayment" name="modeOfPayment">
+                                                <option value="">Select Mode of Payment</option>
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="USDT">USDT</option>
+                                                <option value="TRC20">TRC20</option>
+                                                <option value="UPI">UPI</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="depositAmount">Enter Deposit Amount (USD)</label>
+                                            <input type="number" class="form-control mt-1" id="depositAmount"
+                                                name="depositAmount" placeholder="Enter amount in USD">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+
+                                <div class="mt-4">
+                                    <div class="container mt-5">
+
+                                        <div class="row justify-content-center">
+
+                                            <div class="col-12 col-lg-10">
+                                                <p class="text-secondary">Payment History(13)</p>
+                                                <div class="table-responsive no-warp" style="overflow: scroll;">
+                                                    <table class="table table-bordered table-striped">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Time</th>
+                                                                <th>Amount</th>
+                                                                <th>Method</th>
+                                                                <th>Status</th>
+                                                                <th>Detail</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>2024-06-17 09:30 AM</td>
+                                                                <td>$100</td>
+                                                                <td>Bank Transfer</td>
+                                                                <td>Completed</td>
+                                                                <td>Copy Trading flow</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>2024-06-16 03:45 PM</td>
+                                                                <td>$50</td>
+                                                                <td>USDT</td>
+                                                                <td>Pending</td>
+                                                                <td>Copy Trading flow</td>
+                                                            </tr>
+                                                            <!-- Add more rows as needed -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="unique-tab-content" id="unique-withdraw">
+                                <div class="unique-tab-content-inner">
+                                    <div class="unique-tab-content-inner">
+                                        <div>
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-6 form-section mb-4">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="bankName">Bank Name</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="bankName" placeholder="Enter bank name">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="accountNumber">Account Number</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="accountNumber"
+                                                                    placeholder="Enter account number">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="ifscCode">IFSC Code</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="ifscCode" placeholder="Enter IFSC code">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="bicSwiftCode">BIC / SWIFT Code</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="bicSwiftCode"
+                                                                    placeholder="Enter BIC / SWIFT code">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="branch">Branch</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="branch" placeholder="Enter branch">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="bankAccountCurrency">Bank Account
+                                                                    Currency</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="bankAccountCurrency"
+                                                                    placeholder="Enter bank account currency">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 form-section">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="upiAddress">UPI Address</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="upiAddress" placeholder="Enter UPI address">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="btcWithdrawalAddress">BTC Withdrawal
+                                                                    Address</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="btcWithdrawalAddress"
+                                                                    placeholder="Enter BTC withdrawal address">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="ethWithdrawalAddress">ETH Withdrawal
+                                                                    Address</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="ethWithdrawalAddress"
+                                                                    placeholder="Enter ETH withdrawal address">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="cryptoAddress">Crypto Address</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="cryptoAddress"
+                                                                    placeholder="Enter crypto address">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="newAddress1">New Address 1</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="newAddress1" placeholder="Enter new address 1">
+                                                            </div>
+                                                            <div class="form-group col-12 mt-4">
+                                                                <label for="newAddress2">New Address 2</label>
+                                                                <input type="text" class=" form-control mt-2"
+                                                                    id="newAddress2" placeholder="Enter new address 2">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-block mt-4">Save
+                                                    Payment
+                                                    Details</button>
+                                            </form>
+
+                                            <div class="divider-x mt-4"></div>
+                                            <div>
+                                                <div class="p-4 text-center">Request Payment</div>
+                                                <div class="mx-auto">
+                                                    <div class="divider-half"></div>
+                                                </div>
+
+                                                <form class="custom-form mt-4">
+                                                    <div class="form-group">
+                                                        <label for="modeOfPayment">Mode of Payment</label>
+                                                        <select class="form-control mt-1" id="modeOfPayment"
+                                                            name="modeOfPayment">
+                                                            <option value="">Select Mode of Payment</option>
+                                                            <option value="Bank Transfer">Bank Transfer</option>
+                                                            <option value="USDT">USDT</option>
+                                                            <option value="TRC20">TRC20</option>
+                                                            <option value="UPI">UPI</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="depositAmount">Enter Deposit Amount (USD)</label>
+                                                        <input type="number" class="form-control mt-1"
+                                                            id="depositAmount" name="depositAmount"
+                                                            placeholder="Enter amount in USD">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </form>
+                                                <div class="mt-4">
+                                                    <div class="container mt-5">
+
+                                                        <div class="row justify-content-center">
+
+                                                            <div class="col-12 col-lg-10">
+                                                                <p class="text-secondary">Transaction History
+                                                                    History(13)
+                                                                </p>
+                                                                <div class="table-responsive no-warp"
+                                                                    style="overflow: scroll;">
+                                                                    <table class="table table-bordered table-striped">
+                                                                        <thead class="thead-dark">
+                                                                            <tr>
+                                                                                <th>ID</th>
+                                                                                <th>Time</th>
+                                                                                <th>Amount</th>
+                                                                                <th>Method</th>
+                                                                                <th>Status</th>
+                                                                                <th>Detail</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>1</td>
+                                                                                <td>2024-06-17 09:30 AM</td>
+                                                                                <td>$100</td>
+                                                                                <td>Bank Transfer</td>
+                                                                                <td>Completed</td>
+                                                                                <td>Copy Trading flow</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>2</td>
+                                                                                <td>2024-06-16 03:45 PM</td>
+                                                                                <td>$50</td>
+                                                                                <td>USDT</td>
+                                                                                <td>Pending</td>
+                                                                                <td>Copy Trading flow</td>
+                                                                            </tr>
+                                                                            <!-- Add more rows as needed -->
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4" id="cap-content">
+                    <div id="custom-tabs">
+                        <div class="custom-tab-switcher">
+                            <div class="custom-tab-button active" id="custom-tab-trading"
+                                onclick="switchTab('trading')">
+                                TRADING SIGNALS</div>
+                            <div class="custom-tab-button" id="custom-tab-following" onclick="switchTab('following')">
+                                FOLLOWING TRADING SIGNALS</div>
+                        </div>
+
+                        <div class="custom-tab-content active" id="custom-trading-content">
+                            <div class="custom-table-responsive" style="overflow: auto;">
+                                <table class="custom-responsive-table text-x-small">
+                                    <thead>
+                                        <tr>
+                                            <th>NAME</th>
+                                            <th>RANK</th>
+                                            <th>Growth</th>
+                                            <th>Followers</th>
+                                            <th>DRAWDOWN</th>
+                                            <th>fund risk</th>
+                                            <th>Level</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Example row -->
+                                        <tr>
+                                            <td class="w-100 d-flex d-flex-justify-center">
+                                                <div>
+                                                    <div class="text-secondary">Admin</div>
+                                                    <div class="follow-box">
+                                                        <div class="d-flex gap-2">
+                                                            <div>Follow</div>
+                                                            <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>5%</td>
+                                            <td>1000</td>
+                                            <td>-2%</td>
+                                            <td>Medium</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-100 d-flex d-flex-justify-center">
+                                                <div>
+                                                    <div class="text-secondary">Admin</div>
+                                                    <div class="unfollow-box">
+                                                        <div class="d-flex gap-2">
+                                                            <div>UNFollow</div>
+                                                            <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>5%</td>
+                                            <td>1000</td>
+                                            <td>-2%</td>
+                                            <td>Medium</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="custom-tab-content" id="custom-following-content">
+                            <div class="custom-table-responsive" style="overflow: auto;">
+                                <table class="custom-responsive-table text-x-small">
+                                    <thead>
+                                        <tr>
+                                            <th>NAME</th>
+                                            <th>FOLLOW DATE</th>
+                                            <th>TRADE METHOD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Example row -->
+                                        <tr>
+                                            <td>Admin</td>
+                                            <td>2024-05-24 13:03:01</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center align-items-center gap-2">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div>balance</div>
+                                                        <div>
+                                                            <button class="btn btn-secondary" data-bs-toggle="modal"
+                                                                data-bs-target="#editModal">
+                                                                <i class="bi bi-pencil-fill"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4" id="mortarboard-content">
+                    <div id="mam-tabs">
+                        <div class="mam-tab-switcher">
+                            <div class="mam-tab-button active" id="mam-tab-user" onclick="switchMamTab('user')">MAM USER
+                                LIST</div>
+                            <div class="mam-tab-button" id="mam-tab-following" onclick="switchMamTab('following')">
+                                FOLLOWING
+                                MAM LIST</div>
+                        </div>
+
+                        <div class="mam-tab-content active" id="mam-user-content">
+                            <div class="custom-table-responsive" style="overflow: auto;">
+                                <table class="custom-responsive-table text-x-small table">
+                                    <thead>
+                                        <tr>
+                                            <th>NAME</th>
+                                            <th>RANK</th>
+                                            <th>Growth</th>
+                                            <th>Followers</th>
+                                            <th>DRAWDOWN</th>
+                                            <th>Fund Risk</th>
+                                            <th>Level</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Example row -->
+                                        <tr>
+                                            <td class="w-100 d-flex justify-content-center">
+                                                <div>
+                                                    <div class="text-secondary">Admin</div>
+                                                    <div class="follow-box">
+                                                        <div class="d-flex gap-2">
+                                                            <div>Follow</div>
+                                                            <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>5%</td>
+                                            <td>1000</td>
+                                            <td>-2%</td>
+                                            <td>Medium</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-100 d-flex justify-content-center">
+                                                <div>
+                                                    <div class="text-secondary">Admin</div>
+                                                    <div class="unfollow-box">
+                                                        <div class="d-flex gap-2">
+                                                            <div>Unfollow</div>
+                                                            <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>5%</td>
+                                            <td>1000</td>
+                                            <td>-2%</td>
+                                            <td>Medium</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="mam-tab-content" id="mam-following-content">
+                            <div class="custom-table-responsive" style="overflow: auto;">
+                                <table class="custom-responsive-table text-x-small">
+                                    <thead>
+                                        <tr>
+                                            <th>NAME</th>
+                                            <th>MAM SHARE</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Example row -->
+                                        <tr>
+                                            <td>test</td>
+                                            <td>50</td>
+                                        </tr>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>50</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="" id="settings-content">
+                    <div>
+                        <div class="border-btm d-block d-md-none">
+                            <h6>Settings</h6>
+                        </div>
+                    </div>
+
+                    <div class="container p-4">
+                        <div class="d-flex justify-content-center align-items-center cursor">
+                            <div>
+                                <div class="mt-5 text-center">
+                                    <h3>Xtreme Next Live - Demo</h3>
+                                    <div>XtremeNext Limited - Live</div>
+                                </div>
+                                <div class="mt-2 text-center">
+                                    <div>Acc No : 10335</div>
+                                    <div>Balance: 9,948.60</div>
+                                </div>
+                            </div>
+                            <!-- <div class="ml-5">
+                                <i class="bi bi-chevron-right"></i>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border" id="toggle-dashboard">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-success btn-sm"><i class="bi bi-compass"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="dashboard-content" class="d-block py-2">Dashboard</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#" data-target="dashboard-content" class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div>            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border" id="toggle-code">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-code-slash"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="code-content" class="d-block py-2">API Access</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#"data-target="code-content"  class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div>            
+                            </div>
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-warning btn-sm"><i class="text-white bi bi-currency-dollar"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="crown-content" class="d-block py-2">Funds</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#" data-target="crown-content" class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div>            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-people"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="users-content" class="d-block py-2">Introducing Broker</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#"  data-target="users-content" class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gray-divider">
+
+                    </div>
+    
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-success btn-sm"><i class="bi bi-coin"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="cap-content" class="d-block py-2">Trading Signal</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#" data-target="cap-content" class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                  
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-mortarboard-fill"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="mortarboard-content" class="d-block py-2">MAM</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#" data-target="mortarboard-content"  class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-warning btn-sm text-white"><i class="bi bi-bank"></i></button>
+                                    <div class="sidebar-item flex-fill text-center">
+                                        <a href="#" data-target="person-badge-content" class="d-block py-2">PAMM</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <div class="sidebar-item flex-fill text-center">
+                                    <a href="#" data-target="person-badge-content"  class="d-block py-2"> <i class="bi bi-chevron-right"></i></a>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-person"></i></button>
+                                    <div>Client Portal</div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gray-divider">
+
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-success btn-sm"><i class="bi bi-gear"></i></button>
+                                    <div>Settings</div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-gear"></i></button>
+                                    <div>Default Theme</div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-warning text-white btn-sm"><i class="bi bi-question"></i></button>
+                                    <div>Support</div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex justify-content-between align-items-center cursor bottom-border">
+                            <div class="p-2">
+                                <div class="d-flex gap-2 align-items-center">
+                                    <button type="button" class="btn btn-primary btn-sm"><i class="bi bi-box-arrow-right"></i></button>
+                                    <div>Logout</div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div id="person-badge-content">
+                    <div id="pamm-tabs">
+                        <div class="pamm-tab-switcher">
+                            <div class="pamm-tab-button active" id="pamm-tab-user" onclick="switchPammTab('user')">PAMM USER
+                                LIST</div>
+                            <div class="pamm-tab-button" id="pamm-tab-following" onclick="switchPammTab('following')">
+                                FOLLOWING
+                                PAMM LIST</div>
+                        </div>
+
+                        <div class="pamm-tab-content active" id="pamm-user-content">
+                            <div class="custom-table-responsive" style="overflow: auto;">
+                                <table class="custom-responsive-table text-x-small table">
+                                    <thead>
+                                        <tr>
+                                            <th>NAME</th>
+                                            <th>RANK</th>
+                                            <th>Growth</th>
+                                            <th>Followers</th>
+                                            <th>DRAWDOWN</th>
+                                            <th>Fund Risk</th>
+                                            <th>Level</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Example row -->
+                                        <tr>
+                                            <td class="w-100 d-flex justify-content-center">
+                                                <div>
+                                                    <div class="text-secondary">Admin</div>
+                                                    <div class="follow-box">
+                                                        <div class="d-flex gap-2">
+                                                            <div>Follow</div>
+                                                            <i class="bi bi-hand-thumbs-up-fill text-blue"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>5%</td>
+                                            <td>1000</td>
+                                            <td>-2%</td>
+                                            <td>Medium</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="w-100 d-flex justify-content-center">
+                                                <div>
+                                                    <div class="text-secondary">Admin</div>
+                                                    <div class="unfollow-box">
+                                                        <div class="d-flex gap-2">
+                                                            <div>Unfollow</div>
+                                                            <i class="bi bi-hand-thumbs-down-fill text-red"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td>5%</td>
+                                            <td>1000</td>
+                                            <td>-2%</td>
+                                            <td>Medium</td>
+                                            <td>High</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="pamm-tab-content" id="pamm-following-content">
+                            <div class="custom-table-responsive" style="overflow: auto;">
+                                <table class="custom-responsive-table text-x-small">
+                                    <thead>
+                                        <tr>
+                                            <th>NAME</th>
+                                            <th>MAM SHARE</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Example row -->
+                                        <tr>
+                                            <td>test</td>
+                                            <td>50</td>
+                                        </tr>
+                                        <tr>
+                                            <td>test</td>
+                                            <td>50</td>
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="">
+
+        </div>
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="p-4 text-center">Edit Copy Trading Follow</div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Methods</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <select class="form-control mt-2" id="tradeMethod" name="tradeMethod">
+                                    <option value="balance">Balance Based</option>
+                                    <option value="equity">Equity Based</option>
+                                    <option value="multiplier">Multiplier Based</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Navigation for Small Screens -->
+    <nav class="w-100 fixed-bottom bg-light d-block d-md-none">
+        <ul class="d-flex w-100 justify-content-between m-0 p-0">
+            <li class="sidebar-item flex-fill text-center">
+                <a href="#" data-target="qoute-content" class="d-block py-2"><i class="bi bi-arrow-down-up"></i></a>
+                <div class="small-text">Quotes</div>
+            </li>
+            <li class="sidebar-item flex-fill text-center">
+                <a href="#" data-target="history-content" class="d-block py-2"><i class="bi bi-clock-history"></i></a>
+                <div class="small-text">History</div>
+            </li>
+            <li class="sidebar-item flex-fill text-center">
+                <a href="#" data-target="position-content" class="d-block py-2"><i class="bi bi-bag-plus"></i></a>
+                <div class="small-text">Postion</div>
+            </li>
+            <li class="sidebar-item flex-fill text-center">
+                <a href="#" data-target="settings-content" class="d-block py-2"><i class="bi bi-gear"></i></a>
+                <div class="small-text">Settings</div>
+            </li>
+        </ul>
+    </nav>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <!-- Include DataTables JS -->
+       <script type="text/javascript" charset="utf8"
+       src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
